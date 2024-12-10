@@ -41,55 +41,57 @@
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>
     function deletePost() {
+
         if (confirm("削除しますか?")) {
             document.delete.submit();
         }
     }
+
 </script>
 <style scoped>
     .post-detail-page .user-icon {
         width: 50px;
         height: 50px;
     }
-    
+
     .post-detail-page .user-info {
         display: flex;
     }
-    
+
     .post-detail-page .user-name {
         line-height: 50px;
         font-size: 18px;
     }
-    
+
     .post-detail-page .time-stamp {
         text-align: end;
         font-size: 14px;
     }
-    
+
     .post-detail-page .post {
         padding: 0 10px;
     }
-    
+
     .post-detail-page .menu {
         display: flex;
         justify-content: end;
     }
-    
+
     .post-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
-    
+
     .post-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
-    
+
     .post-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
-    
+
     .post-detail-page .content {
         word-wrap: break-word;
     }
