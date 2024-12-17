@@ -22,6 +22,7 @@ class UserController extends Controller
 
         // 指定したIDのユーザー情報を取得する
         $user = User::find($id);
+        
 
         // ユーザーが存在するか判定
         if ($user == null) {

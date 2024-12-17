@@ -20,7 +20,16 @@
             <div class="post-button">
                 <button class="button-white" type="submit">投稿する</button>
             </div>
+
+            @error('$post')
+            <div class="mt-3">
+                <p class="text-red-500">
+                    {{ $message }}
+                </p>
+            </div>
+            @enderror
         </form>
+
     </div>
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
@@ -29,12 +38,12 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .post-page .post-button {
         text-align: end;
         margin: 20px 20px 0 0;
     }
-    
+
     .post-page button {
         height: 35px;
         width: 90px;

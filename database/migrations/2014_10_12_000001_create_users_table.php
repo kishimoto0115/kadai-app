@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('biography', 140);
             $table->string('password');
             $table->timestamps();
+            
         });
     }
 

@@ -8,12 +8,12 @@ const SP_BREAKPOINT = 926;
 
 // ----------
 //　初期処理
-if (!isSp()) {
-    let body = document.body;
-    body.innerHTML = `このアプリはモバイル版専用です
-    </br>
-    開発ツール(F12)で画面の横幅を${SP_BREAKPOINT}px以下に設定してリロードしてください`;
-}
+// if (!isSp()) {
+//     let body = document.body;
+//     body.innerHTML = `このアプリはモバイル版専用です
+//     </br>
+//     開発ツール(F12)で画面の横幅を${SP_BREAKPOINT}px以下に設定してリロードしてください`;
+// }
 
 let logoutButton = document.getElementById("logout");
 if (logoutButton) {

@@ -39,12 +39,19 @@ class PostController extends Controller
         $loginUser = Session::get('user');
 
         // データ登録
+        $rules=[
+            'post'=>'required|max:140',
+            'post'=>'required',
+         ];
+        $messeages = ['required' => '必須項目です','max' => '1文字以上140文字以下にしてください。'];
+         Validator::make($request->all(), $rules, $messages)->validate();
         $post = new Post;
         $post->user = $loginUser->id;
         $post->content = $request->postContent;
-        $post->save();
+            
 
         return redirect('/');
+        
     }
 
     /**
