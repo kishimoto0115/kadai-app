@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user');
             $table->unsignedBigInteger('follow_user');
             $table->timestamps();
+         
         });
     }
 

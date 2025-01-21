@@ -25,8 +25,22 @@
             <div class="save-button">
                 <button class="button-white">変更を保存</button>
             </div>
-    </div>
-    </form>
+            <div class="flex flex-col items-center">
+                <label class="w-full max-w-3xl mx-auto">
+                    <input
+                        class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-4 pl-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                        type="text" name="task_name" value="{{ $task->name }}" />
+                    @error('task_name')
+                    <div class="mt-3">
+                        <p class="text-red-500">
+                            {{ $message }}
+                        </p>
+                    </div>
+                    @enderror
+                </label>
+
+            </div>
+        </form>
 </body>
 <x-footer></x-footer>
 <script src="{{ asset('/js/app.js') }}"></script>
@@ -35,11 +49,11 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .post-edit-page .title {
         padding: 10px 0 0 10px;
     }
-    
+
     .post-edit-page .save-button {
         display: flex;
         justify-content: end;

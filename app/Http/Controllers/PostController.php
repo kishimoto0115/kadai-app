@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Controllers\Controller,
     Session;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -40,15 +41,20 @@ class PostController extends Controller
 
         // データ登録
         $rules=[
-            'post'=>'required|max:140',
-            'post'=>'required',
+            'postContent'=>'required|max:140'
          ];
-        $messeages = ['required' => '必須項目です','max' => '1文字以上140文字以下にしてください。'];
+
+         $messages = ['required' => '必須項目です','max' => '1文字以上140文字以下にしてください。'];
+
          Validator::make($request->all(), $rules, $messages)->validate();
+
         $post = new Post;
-        $post->user = $loginUser->id;
-        $post->content = $request->postContent;
+        
+        $post->user = $this->id('$id');
+        $post->content = $request->postContent('postContent');
             
+        $post->save();
+
 
         return redirect('/');
         
@@ -81,6 +87,7 @@ class PostController extends Controller
         }
 
         // 画面表示
+     
         return view('post.detail', compact('post', 'user', 'isOwnPost'));
     }
 

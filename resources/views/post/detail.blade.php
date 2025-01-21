@@ -34,6 +34,13 @@
                     </div>
                 </form>
             </div>
+            @error('post')
+            <div class="mt-3">
+                <p class="text-red-500">
+                    {{ $message }}
+                </p>
+            </div>
+            @enderror
         </div>
     </div>
 </body>

@@ -21,7 +21,7 @@
                 <button class="button-white" type="submit">投稿する</button>
             </div>
 
-            @error('$post')
+            @error('postContent')
             <div class="mt-3">
                 <p class="text-red-500">
                     {{ $message }}
