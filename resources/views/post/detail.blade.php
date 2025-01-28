@@ -15,6 +15,7 @@
     <x-header></x-header>
     <div class="page post-detail-page">
         <div class="post">
+
             <a href="/user/{{ $user->id }}">
                 <div class="user-info">
                     <img class="user-icon" src="{{ asset('/img/user_icon.png') }}" alt="" />
@@ -23,7 +24,10 @@
                 <div class="content">{{ $post->content }}</div>
                 <div class="time-stamp">{{ $post->created_at }}</div>
             </a>
+            @if ($post->user == $loginUser->id )
+
             <div class="menu">
+
                 <div class="menu-item font-blue">
                     <a href="/post/edit/{{ $post->id }}">編集</a>
                 </div>
@@ -33,17 +37,21 @@
                         削除
                     </div>
                 </form>
+
             </div>
+            @endif
             @error('post')
             <div class="mt-3">
                 <p class="text-red-500">
                     {{ $message }}
                 </p>
             </div>
+
             @enderror
         </div>
     </div>
 </body>
+
 <x-footer></x-footer>
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>

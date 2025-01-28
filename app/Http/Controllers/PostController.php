@@ -50,11 +50,10 @@ class PostController extends Controller
 
         $post = new Post;
         
-        $post->user = $this->id('$id');
-        $post->content = $request->postContent('postContent');
+        $post->user = $loginUser->id;
+        $post->content = $request->postContent;
             
         $post->save();
-
 
         return redirect('/');
         
@@ -112,7 +111,7 @@ class PostController extends Controller
         $user = $post->user();
         // 自分自身の投稿ページか判定
         if ($loginUser->id != $user->id) {
-            return redirect('/');
+            return redirect ('/');
         }
 
         // 画面表示
