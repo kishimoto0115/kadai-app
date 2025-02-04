@@ -124,7 +124,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //TODO 登録処理
+        $rules = [
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|min:8',
+         ];
+
+          $messages = [ 'email.unique'=> 'このメールアドレスはすでに使用されています'];
+ 
+          ValidatesRequests ::make($request->all().$rules,$messages)->validate();
+        $user = new User;
+        $user->email = $request->email;
+        $user->password = $request->password; 
+        $user->save();
+
 
         return redirect('/');
     }
+
+
 }
