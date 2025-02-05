@@ -26,9 +26,20 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" />
             </div>
+            <div class="form-item name">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" />
+            </div>
             @error('email')
-             <div class="error-message font-red">{{ $errorMessage }}</div> 
-             @enderror
+            {{ $message }}
+            @enderror
+            @error('password')
+            {{ $message }}
+            @enderror
+            @error('name')
+            {{ $message }}
+            @enderror
+
             <div class="signup-button">
                 <button class="button-white" type="submit">新規登録</button>
             </div>

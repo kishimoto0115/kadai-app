@@ -29,15 +29,19 @@ class HomeController extends Controller
         array_push($users, $loginUser);
         // 各ユーザーの投稿を取得
         $posts = [];
+
+
         foreach ($users as $user) {
             foreach ($user->posts() as $post) {
                 array_push($posts, array('user' => $user, 'post' => $post));
             }
         }
 
-        // 投稿を時系列順に並べ替え
-        $posts = $this->sort($posts);
 
+        if (count($posts) > 0) {
+            // 投稿を時系列順に並べ替え
+            $posts = $this->sort($posts);
+        }
         // 画面表示
         return view('home', compact('posts'));
     }

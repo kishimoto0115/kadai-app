@@ -128,17 +128,20 @@ class UserController extends Controller
         $rules = [
             'email' => 'required|string|email|unique:users',
             'password' => 'required|min:8',
+            'name' => 'required',
         ];
 
-        $messages = ['email.unique' => 'このメールアドレスはすでに使用されています'];
+        $messages = ['email.unique' => 'このメールアドレスはすでに使用されています', 'email.required' => 'emailは必須項目です', 'password.required' => 'passwordは必須項目です', 'name.required' => 'nameは必須項目です',  'min:8' => '8文字以上にしてください'];
+
 
         Validator::make($request->all(), $rules, $messages)->validate();
         $user = new User;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->name = $request->name;
         $user->save();
 
-
-        return redirect('/users');
+        Session::put('user', $user);
+        return redirect('/');
     }
 }
