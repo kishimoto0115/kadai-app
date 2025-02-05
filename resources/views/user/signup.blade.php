@@ -13,9 +13,9 @@
 
 <body class="">
     <x-header></x-header>
-    <div class="page singup-page">
+    <div class="page signup-page">
         <h2>課題: ここに新規登録ページを作ること</h2>
-        <form class="form" action="/login" method="post">
+        <form class="form" action="/signup" method="post">
             @csrf
             <div class="form-item email">
                 <label for="email">Email</label>
@@ -26,9 +26,10 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" />
             </div>
-
-
-            <div class="login-button">
+            @error('email')
+             <div class="error-message font-red">{{ $errorMessage }}</div> 
+             @enderror
+            <div class="signup-button">
                 <button class="button-white" type="submit">新規登録</button>
             </div>
         </form>

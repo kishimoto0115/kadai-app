@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller,
     Session;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -22,7 +23,7 @@ class UserController extends Controller
 
         // 指定したIDのユーザー情報を取得する
         $user = User::find($id);
-        
+
 
         // ユーザーが存在するか判定
         if ($user == null) {
@@ -113,7 +114,7 @@ class UserController extends Controller
     /**
      * 新規登録画面遷移
      */
-    public function create()
+    function create()
     {
         return view('user.signup');
     }
@@ -127,19 +128,17 @@ class UserController extends Controller
         $rules = [
             'email' => 'required|string|email|unique:users',
             'password' => 'required|min:8',
-         ];
+        ];
 
-          $messages = [ 'email.unique'=> 'このメールアドレスはすでに使用されています'];
- 
-          ValidatesRequests ::make($request->all().$rules,$messages)->validate();
+        $messages = ['email.unique' => 'このメールアドレスはすでに使用されています'];
+
+        Validator::make($request->all(), $rules, $messages)->validate();
         $user = new User;
         $user->email = $request->email;
-        $user->password = $request->password; 
+        $user->password = $request->password;
         $user->save();
 
 
-        return redirect('/');
+        return redirect('/users');
     }
-
-
 }
